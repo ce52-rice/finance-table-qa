@@ -1,0 +1,1 @@
+Financial tables and five question prompts derived from snorkelai/finqa-data, revision 9bd176a31004478a5250078872d893fd5fb0736b. Apache License 2.0. Tables are normalized into ordered row and column arrays and assigned stable short identifiers. Evaluation only.

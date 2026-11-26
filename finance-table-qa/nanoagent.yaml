@@ -1,0 +1,64 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+id: finance-table-qa
+name: Finance Table QA
+version: 0.1.0
+status: ready
+spec: nanoagent.plugin/v0001
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: []
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  list_tables:
+    description: List the available tables and descriptions for one company.
+  describe_table:
+    description: Show indexed row labels and indexed column headings for one table.
+  read_cells:
+    description: Read chosen rows and columns or a whole table. Each returned cell has a stable citation ID.
+  calculate:
+    description: Add, subtract, multiply or divide two signed decimal numbers.
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  lookup-rate:
+    description: "WALMART. What is the weighted-average discount rate for Finance Leases as of January 31, 2025?"
+    runner: agent
+    tools: [list_tables, describe_table, read_cells, calculate]
+    reference: null
+    instructions: |-
+      WALMART. What is the weighted-average discount rate for Finance Leases as of January 31, 2025?
+      Use the filing tables. Return the final value or yes/no in answer, and the exact cell IDs supporting it in evidence. A bare number represents a decimal ratio or rate. Percent signs are accepted.
+  income-ratio:
+    description: "ALPHABET. What is the ratio of Domestic Income to Foreign Income for continuing operations before income taxes in 2022?"
+    runner: agent
+    tools: [list_tables, describe_table, read_cells, calculate]
+    reference: null
+    instructions: |-
+      ALPHABET. What is the ratio of Domestic Income to Foreign Income for continuing operations before income taxes in 2022?
+      Use the filing tables. Return the final value or yes/no in answer, and the exact cell IDs supporting it in evidence. A bare number represents a decimal ratio or rate. Percent signs are accepted.
+  borrowing-change:
+    description: "GS. What is the year-over-year percentage change for total unsecured borrowings from 2023 to 2024?"
+    runner: agent
+    tools: [list_tables, describe_table, read_cells, calculate]
+    reference: null
+    instructions: |-
+      GS. What is the year-over-year percentage change for total unsecured borrowings from 2023 to 2024?
+      Use the filing tables. Return the final value or yes/no in answer, and the exact cell IDs supporting it in evidence. A bare number represents a decimal ratio or rate. Percent signs are accepted.
+  reconcile-shares:
+    description: "DISNEY. For 2024, does the sum of the basic shares outstanding and the weighted average dilutive impact of awards equal the diluted shares outstanding?"
+    runner: agent
+    tools: [list_tables, describe_table, read_cells, calculate]
+    reference: null
+    instructions: |-
+      DISNEY. For 2024, does the sum of the basic shares outstanding and the weighted average dilutive impact of awards equal the diluted shares outstanding?
+      Use the filing tables. Return the final value or yes/no in answer, and the exact cell IDs supporting it in evidence. A bare number represents a decimal ratio or rate. Percent signs are accepted.
+  hedge-ratio:
+    description: "GM. What is the hedge effectiveness ratio for interest rate swaps in 2024, computed as the absolute value of the change in the hedged item divided by the absolute value of the change in the hedging instrument?"
+    runner: agent
+    tools: [list_tables, describe_table, read_cells, calculate]
+    reference: null
+    instructions: |-
+      GM. What is the hedge effectiveness ratio for interest rate swaps in 2024, computed as the absolute value of the change in the hedged item divided by the absolute value of the change in the hedging instrument?
+      Use the filing tables. Return the final value or yes/no in answer, and the exact cell IDs supporting it in evidence. A bare number represents a decimal ratio or rate. Percent signs are accepted.

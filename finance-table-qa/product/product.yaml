@@ -1,0 +1,9 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: Answer questions about company filings with checkable cells.
+summary: Look up a rate, compare periods, reconcile shares, or calculate an income or hedge ratio using published financial tables.
+highlights:
+  - Retrieve specific rows and columns with stable cell citations.
+  - Check each submitted answer and its supporting operands automatically.
+steps:
+  - Choose a finance task by name or ask its question in the chat.
+  - Review the returned value, evidence IDs and verifier verdict.
